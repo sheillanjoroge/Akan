@@ -1,0 +1,53 @@
+
+body{
+    background-image: url("../images/bg.jpg");
+    background-repeat: repeat-y;
+}
+.navbar img{
+   width: 70%;
+   margin-left: 13%;
+}
+.jumbotron p{
+   font-size: 1.2em;
+   text-align: center;
+}
+.mid-title p{
+   text-align: center;
+   font-size: 1.4em;
+}
+.lady, .man{
+   display: none;
+}
+.lady-icon img, .man-icon img{
+   width: 100%;
+}
+#danger-notif, #gender-notif, #year-notif, #month-notif, #day-notif{
+   display: none;
+}
+.offset{
+   margin-left: 3%;
+}
+footer p{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+@media(min-width: 600px){
+    .navbar img{
+        width: 40%;
+        margin-left: 27%;
+    }
+}
+@media(min-width: 900px){
+    .navbar img{
+        width: 30%;
+        height: 50%;
+        margin-left: 35%;
+    }
+    body{
+        background-image: url("../images/bg-large.jpg");
+        background-repeat: repeat-y;
+    }
+}
