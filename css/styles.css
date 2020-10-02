@@ -1,6 +1,6 @@
 
 body{
-    background-image: url("../images/bg.jpg");
+    background-image: url("../images/kentenavbar.jpg");
     background-repeat: repeat-y;
 }
 .navbar img{
@@ -47,7 +47,7 @@ footer p{
         margin-left: 30%;
     }
     body{
-        background-image: url("../images/bg-large.jpg");
+        background-image: url("../images/kentenavbar.jpg");
         background-repeat: repeat-y;
     }
 }
