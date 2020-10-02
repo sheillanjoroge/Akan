@@ -34,17 +34,17 @@ footer p{
     padding-top: 5%;
     padding-bottom: 5%;
 }
-@media(min-width: 600px){
+@media(min-width: 800px){
     .navbar img{
-        width: 40%;
-        margin-left: 27%;
+        width: 37%;
+        margin-left: 25%;
     }
 }
-@media(min-width: 900px){
+@media(min-width: 990px){
     .navbar img{
-        width: 30%;
-        height: 50%;
-        margin-left: 35%;
+        width: 27%;
+        height: 45%;
+        margin-left: 30%;
     }
     body{
         background-image: url("../images/bg-large.jpg");
