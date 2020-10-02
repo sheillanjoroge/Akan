@@ -16,7 +16,7 @@
     <div class="container">
       <div class="jumbotron">
         <p>
-          An <strong><em>Akan</em></strong> name in Ghanian naming culture is a name given to people according to the day of the week they were born
+          An <strong><em>Akan</em></strong> name in Ghanian naming culture is a name given to people according to the day of the week they were born.
         </p>
         <p>
           Enter your birthday (Date of Birth) details below to find out your Akan name...
@@ -42,6 +42,22 @@
               <label for="male" class="myDay offset">Male</label>
               <input type="radio" id="female" class="offset-1" name="gender">
               <label for="female" class="myDay offset">Female</label>
+              <div class="alert alert-danger" role="alert" id="danger-notif">
+                Provide all the required info.
+              </div>
+              <div class="alert alert-danger offset-sm-1" role="alert" id="danger-notif">
+                Make sure you have selected gender.
+              </div>
+              <div class="alert alert-danger offset-sm-1" role="alert" id="day-notif">
+
+              </div>
+              <div class="alert alert-danger offset-sm-1" role="alert" id="month-notif">
+
+              </div>
+              <div class="alert alert-danger offset-sm-1" role="alert" id="year-notif">
+
+              </div>
+              <button type="submit" class="btn btn-success offset-sm-5 offset-5 offset-lg-5" id="button" onclick="validate()">Submit</button>
 
             </form>
 
