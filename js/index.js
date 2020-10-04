@@ -18,15 +18,13 @@ function checkFilled(){
         gender = "";
     }
     //Get all the error divs and check which field is empty.
-    //If any of the field is empty, only show the default error div.
-    //Otherwise turn the default error div off too.
     var defaultErr = document.getElementById('danger-notif');
     var genderErr = document.getElementById('gender-notif');
     var yearErr = document.getElementById('year-notif');
     var monthErr = document.getElementById('month-notif');
     var dayErr = document.getElementById('day-notif');
     
-    //Only allow to move to the succedding methods if and only if this section is satisfied.
+    //Allow to move to the succedding methods if and only if this section is satisfied.
 
     if(year === "" || month === "" || day === "" || gender === ""){
         defaultErr.style.display = "inline";
@@ -40,8 +38,7 @@ function checkFilled(){
             defaultErr.style.display = "none";
         }
     }
-    //
-    checkWhichNotFilled(day, month, year, gender);
+    //checkWhichNotFilled(day, month, year, gender);
 }
 function checkWhichNotFilled(day, month, year, gender){
     var dayInput = document.getElementById('day');
@@ -107,7 +104,7 @@ function validNumbers(day, month, year, gender){
 
     if (day < 1 || day > 31){
         dayErr.innerHTML = "";
-        var text = document.createTextNode("Please correct your day. ");
+        var text = document.createTextNode("Please correct your day.");
         document.getElementById('day').style.borderColor = "red";
         dayErr.appendChild(text);
         dayErr.style.display = "inline";
@@ -139,7 +136,7 @@ function validNumbers(day, month, year, gender){
         counter++;
     }else if(year < 1900){
         yearErr.innerHTML = "";
-        var text = document.createTextNode("Year can't be that old!");
+        var text = document.createTextNode("Error in the Year section!");
         document.getElementById('year').style.borderColor = "red";
         yearErr.appendChild(text);
         yearErr.style.display = "inline";
@@ -158,7 +155,7 @@ function validNumbers(day, month, year, gender){
     }
     
 }
-//Algorithm that calculates the day of the week...
+//Calculator the day of the week...
 function findBirthday(day, month, year, gender){
     var days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     //Day of the month.
@@ -188,15 +185,15 @@ function findBirthday(day, month, year, gender){
     var siku = days[val0];
     
 
-    displayDay(gender, siku);
+    displayDay(gender, day);
 }
-function displayDay(gender, siku){
+function displayDay(gender, day){
     if(gender == "male"){
 
         //Hide the female div
         document.getElementById('lady').style.display = "none";
         
-        //Get the male div, populate with the guys details and make it viscible.
+        //Get the male div, make the man's details viscible.
         var manDay = document.getElementById('siku-day');
         var manAkan = document.getElementById('man-akan');
 
@@ -207,7 +204,7 @@ function displayDay(gender, siku){
 
         //Update the Akan name given.
         manAkan.innerHTML = "";
-        //Possible names for the males.
+        //Names for the males.
         var maleAkan = {
             "Sunday": "Kwasi",
             "Monday": "Kwadwo",
@@ -247,7 +244,7 @@ function displayDay(gender, siku){
             "Friday": "Afua",
             "Saturday": "Ama"
         }
-        var newName = femaleAkan[siku];
+        var newName = femaleAkan[day];
         var newNameText = document.createTextNode("Akan: " +newName);
         girlAkan.appendChild(newNameText);
         document.getElementById('lady').style.display = "inline";
