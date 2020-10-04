@@ -1,11 +1,11 @@
 
 body{
-    background-image: url("../images/kentenavbar.jpg");
+    background-image: url("./Images/kentenavbar.jpg");
     background-repeat: repeat-y;
 }
 .navbar img{
-   width: 70%;
-   margin-left: 13%;
+   width: 100%;
+   margin-left: 5%;
 }
 .jumbotron p{
    font-size: 1.2em;
@@ -15,11 +15,11 @@ body{
    text-align: center;
    font-size: 1.4em;
 }
-.lady, .man{
+.girl, .man{
    display: none;
 }
-.lady-icon img, .man-icon img{
-   width: 100%;
+.girl img, .man img{
+   width: 110%;
 }
 #danger-notif, #gender-notif, #year-notif, #month-notif, #day-notif{
    display: none;
@@ -47,7 +47,7 @@ footer p{
         margin-left: 30%;
     }
     body{
-        background-image: url("../images/kentenavbar.jpg");
+        background-image: url("./Images/kentenavbar.jpg");
         background-repeat: repeat-y;
     }
 }
