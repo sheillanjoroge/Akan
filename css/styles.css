@@ -1,6 +1,13 @@
+/* @import url('https://fonts.google.com/specimen/Pacifico?category=Handwriting');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap'); */
 body{
     background-image: url("./Images/kentenavbar.jpg");
     background-repeat: repeat-y;
+    
+}
+h1{
+    font-style: italic;
+    font-family: 'Pacifico-Reguar.tff';
 }
 .navbar{
     width: 78%;
@@ -12,12 +19,12 @@ body{
    margin-left: 5%;
 }
 .jumbotron p{
-   font-size: 1.2em;
+   font-size: 1.3em;
    text-align: center;
 }
 .mid-title p{
    text-align: center;
-   font-size: 1.4em;
+   font-size: 1.5em;
 }
 .girl, .man{
    display: none;
@@ -29,15 +36,12 @@ body{
    display: none;
 }
 .offset{
-   margin-left: 3%;
+   margin-left: 5%;
 }
-footer p{
-    text-align: center;
-    background-color: black;
-    color: white;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
+/* .footer{
+    padding-bottom: 30px;
+} */
+
 @media(min-width: 800px){
     .navbar img{
         width: 37%;

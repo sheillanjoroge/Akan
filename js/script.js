@@ -1,70 +1,15 @@
-function displayDay(gender, siku){
-    if(gender == "male"){
-
-        //This hides female div
-        document.getElementById('girl').style.display = "none";
-        
-        //This makes the man's details viscible.
-        var manDay = document.getElementById('siku-day');
-        var manAkan = document.getElementById('man-akan');
-
-        //This updates the day of the week.
-        manDay.innerHTML = "";
-        var newDay = document.createTextNode("Day: " + siku);
-        manDay.appendChild(newDay);
-
-        //Update Akan name.
-        manAkan.innerHTML = "";
-        //Male names.
-        var maleAkan = {
-            "Sunday": "Kwasi",
-            "Monday": "Kwadwo",
-            "Tuesday": "Kwabena",
-            "Wednesday": "Kwaku",
-            "Thursday": "Yaw",
-            "Friday": "Kofi",
-            "Saturday": "Kwame"
-        }
-        var newName = maleAkan[siku];
-        var newNameText = document.createTextNode("Akan: " + newName);
-        manAkan.appendChild(newNameText);
-        document.getElementById('man').style.display = "inline";
-        document.getElementById('man').scrollIntoView();
-    }else{
-
-        // Hide the male div.
-        document.getElementById('man').style.display = "none";
-        
-        //This gets the female div.
-        var girlDay = document.getElementById('lady-day');
-        var girlAkan = document.getElementById('lady-akan');
-
-        //This updates the day of the week.
-        girlDay.innerHTML = "";
-        var newDay = document.createTextNode("Day: " + siku);
-        girlDay.appendChild(newDay);
-
-        //Akan name of the lady.
-        girlAkan.innerHTML = "";
-        var femaleAkan = {
-            "Sunday": "Akosua",
-            "Monday": "Adwoa",
-            "Tuesday": "Abenaa",
-            "Wednesday": "Akua",
-            "Thursday": "Yaa",
-            "Friday": "Afua",
-            "Saturday": "Ama"
-        }
 function validate(){
     checkFilled();    
 }
-//This checks for any empty fields providing error handling.
+//This function checks if there are any empty fields.
 function checkFilled(){
+    //Get the data from all the fields.
     var day = document.forms['namingForm']['day'].value;
     var month = document.forms['namingForm']['month'].value;
     var year = document.forms['namingForm']['year'].value;
     var gender = document.getElementsByName('gender');
 
+    //Check for gender selected.
     if(gender[0].checked == true){
         gender = "male";
     }else if(gender[1].checked == true){
@@ -72,7 +17,30 @@ function checkFilled(){
     }else{
         gender = "";
     }
+    //Checks for info not provided or errors.
+    var defaultErr = document.getElementById('danger-notif');
+    var genderErr = document.getElementById('gender-notif');
+    var yearErr = document.getElementById('year-notif');
+    var monthErr = document.getElementById('month-notif');
+    var dayErr = document.getElementById('day-notif');
     
+    
+
+    if(year === "" || month === "" || day === "" || gender === ""){
+        defaultErr.style.display = "inline";
+        genderErr.style.display = "none";
+        yearErr.style.display = "none";
+        monthErr.style.display = "none";
+        dayErr.style.display = "none";
+        
+    }else{
+        if(defaultErr.style.display == "inline"){
+            defaultErr.style.display = "none";
+        }
+    }
+    //
+    checkWhichNotFilled(day, month, year, gender);
+}
 function checkWhichNotFilled(day, month, year, gender){
     var dayInput = document.getElementById('day');
     var monthInput = document.getElementById('month');
@@ -102,7 +70,7 @@ function checkWhichNotFilled(day, month, year, gender){
     }
     if(counter > 0){
         document.getElementById('man').style.display = "none";
-        document.getElementById('lady').style.display = "none";
+        document.getElementById('girl').style.display = "none";
         return;
     }else{
         if(day !== "" && month !== "" && year !== "" && gender === ""){
@@ -113,7 +81,7 @@ function checkWhichNotFilled(day, month, year, gender){
             yearInput.style.borderColor = "#ced4da"; 
 
             document.getElementById('man').style.display = "none";
-            document.getElementById('lady').style.display = "none";
+            document.getElementById('girl').style.display = "none";
             return;
         }else{
             allFilled(day, month, year, gender);
@@ -122,30 +90,6 @@ function checkWhichNotFilled(day, month, year, gender){
     
     
 }
-
-//This checks which field is empty and errors.
-var defaultErr = document.getElementById('danger-notif');
-var genderErr = document.getElementById('gender-notif');
-var yearErr = document.getElementById('year-notif');
-var monthErr = document.getElementById('month-notif');
-var dayErr = document.getElementById('day-notif');
-
-
-if(year === "" || month === "" || day === "" || gender === ""){
-    defaultErr.style.display = "inline";
-    genderErr.style.display = "none";
-    yearErr.style.display = "none";
-    monthErr.style.display = "none";
-    dayErr.style.display = "none";
-    
-}else{
-    if(defaultErr.style.display == "inline"){
-        defaultErr.style.display = "none";
-    }
-}
-checkWhichNotFilled(day, month, year, gender);
-}
-
 function allFilled(day, month, year, gender){
     if(day !== "" && month !== "" && year !== "" && gender !== ""){
         document.getElementById('danger-notif').style.display = "none";
@@ -161,7 +105,7 @@ function validNumbers(day, month, year, gender){
 
     if (day < 1 || day > 31){
         dayErr.innerHTML = "";
-        var text = document.createTextNode("Please correct your day.");
+        var text = document.createTextNode("Please correct your day. ");
         document.getElementById('day').style.borderColor = "red";
         dayErr.appendChild(text);
         dayErr.style.display = "inline";
@@ -193,7 +137,7 @@ function validNumbers(day, month, year, gender){
         counter++;
     }else if(year < 1900){
         yearErr.innerHTML = "";
-        var text = document.createTextNode("Error in the Year section!");
+        var text = document.createTextNode("Year can't be that old!");
         document.getElementById('year').style.borderColor = "red";
         yearErr.appendChild(text);
         yearErr.style.display = "inline";
@@ -212,7 +156,7 @@ function validNumbers(day, month, year, gender){
     }
     
 }
-//Calculator the day of the week...
+//This function calculates the day of the week.
 function findBirthday(day, month, year, gender){
     var days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     //Day of the month.
@@ -244,7 +188,63 @@ function findBirthday(day, month, year, gender){
 
     displayDay(gender, siku);
 }
+function displayDay(gender, siku){
+    if(gender == "male"){
 
+        //Hide the female div
+        document.getElementById('girl').style.display = "none";
+        
+        //This makes the male div it viscible.
+        var manDay = document.getElementById('siku-day');
+        var manAkan = document.getElementById('man-akan');
+
+        //Update the day of the week.
+        manDay.innerHTML = "";
+        var newDay = document.createTextNode("Day: " + siku);
+        manDay.appendChild(newDay);
+
+        //Update the Akan name.
+        manAkan.innerHTML = "";
+        //Possible names for the males.
+        var maleAkan = {
+            "Sunday": "Kwasi",
+            "Monday": "Kwadwo",
+            "Tuesday": "Kwabena",
+            "Wednesday": "Kwaku",
+            "Thursday": "Yaw",
+            "Friday": "Kofi",
+            "Saturday": "Kwame"
+        }
+        var newName = maleAkan[siku];
+        var newNameText = document.createTextNode("Akan: " + newName);
+        manAkan.appendChild(newNameText);
+        document.getElementById('man').style.display = "inline";
+        document.getElementById('man').scrollIntoView();
+    }else{
+
+        //Hide the male div.
+        document.getElementById('man').style.display = "none";
+        
+        //Gets the female div.
+        var girlDay = document.getElementById('lady-day');
+        var girlAkan = document.getElementById('lady-akan');
+
+        //Update the day of the week.
+        girlDay.innerHTML = "";
+        var newDay = document.createTextNode("Day: " + siku);
+        girlDay.appendChild(newDay);
+
+        //Update the Akan name of the girl.
+        girlAkan.innerHTML = "";
+        var femaleAkan = {
+            "Sunday": "Akosua",
+            "Monday": "Adwoa",
+            "Tuesday": "Abenaa",
+            "Wednesday": "Akua",
+            "Thursday": "Yaa",
+            "Friday": "Afua",
+            "Saturday": "Ama"
+        }
         var newName = femaleAkan[siku];
         var newNameText = document.createTextNode("Akan: " +newName);
         girlAkan.appendChild(newNameText);
