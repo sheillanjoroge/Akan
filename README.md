@@ -16,6 +16,6 @@ None at the moment, will post if any.
 ## Support and contact details
 For any contribution contact sheillan.njoroge@gmail.com.
 ## Demo
-https://sheillanjoroge.github.io/Akan/
+https://sheillanjoroge.github.io/akan/
 ### License
 MIT
