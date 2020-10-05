@@ -3,7 +3,7 @@ function validate(){
 }
 //This function checks if there are any empty fields.
 function checkFilled(){
-    //Get the data from all the fields.
+    
     var day = document.forms['namingForm']['day'].value;
     var month = document.forms['namingForm']['month'].value;
     var year = document.forms['namingForm']['year'].value;
@@ -38,58 +38,10 @@ function checkFilled(){
             defaultErr.style.display = "none";
         }
     }
-    //
+    
     checkWhichNotFilled(day, month, year, gender);
 }
-function checkWhichNotFilled(day, month, year, gender){
-    var dayInput = document.getElementById('day');
-    var monthInput = document.getElementById('month');
-    var yearInput = document.getElementById('year');
-    var counter = 0;
 
-    if(day === ""){
-        dayInput.style.borderColor = "red"; 
-        counter++;
-    }
-    if(month === ""){
-        monthInput.style.borderColor = "red"; 
-        counter++;
-    }
-    if(year === ""){
-        yearInput.style.borderColor = "red"; 
-        counter++;
-    }
-    if(day !== ""){
-        dayInput.style.borderColor = "#ced4da"; 
-    }
-    if(month !== ""){
-        monthInput.style.borderColor = "#ced4da"; 
-    }
-    if(year !== ""){
-        yearInput.style.borderColor = "#ced4da"; 
-    }
-    if(counter > 0){
-        document.getElementById('man').style.display = "none";
-        document.getElementById('girl').style.display = "none";
-        return;
-    }else{
-        if(day !== "" && month !== "" && year !== "" && gender === ""){
-            document.getElementById('danger-notif').style.display = "none";
-            document.getElementById('gender-notif').style.display = "inline";
-            dayInput.style.borderColor = "#ced4da"; 
-            monthInput.style.borderColor = "#ced4da"; 
-            yearInput.style.borderColor = "#ced4da"; 
-
-            document.getElementById('man').style.display = "none";
-            document.getElementById('girl').style.display = "none";
-            return;
-        }else{
-            allFilled(day, month, year, gender);
-        }
-    }
-    
-    
-}
 function allFilled(day, month, year, gender){
     if(day !== "" && month !== "" && year !== "" && gender !== ""){
         document.getElementById('danger-notif').style.display = "none";
@@ -154,6 +106,55 @@ function validNumbers(day, month, year, gender){
     }else{
         findBirthday(day, month, year, gender);
     }
+    
+}
+function checkWhichNotFilled(day, month, year, gender){
+    var dayInput = document.getElementById('day');
+    var monthInput = document.getElementById('month');
+    var yearInput = document.getElementById('year');
+    var counter = 0;
+
+    if(day === ""){
+        dayInput.style.borderColor = "red"; 
+        counter++;
+    }
+    if(month === ""){
+        monthInput.style.borderColor = "red"; 
+        counter++;
+    }
+    if(year === ""){
+        yearInput.style.borderColor = "red"; 
+        counter++;
+    }
+    if(day !== ""){
+        dayInput.style.borderColor = "#ced4da"; 
+    }
+    if(month !== ""){
+        monthInput.style.borderColor = "#ced4da"; 
+    }
+    if(year !== ""){
+        yearInput.style.borderColor = "#ced4da"; 
+    }
+    if(counter > 0){
+        document.getElementById('man').style.display = "none";
+        document.getElementById('girl').style.display = "none";
+        return;
+    }else{
+        if(day !== "" && month !== "" && year !== "" && gender === ""){
+            document.getElementById('danger-notif').style.display = "none";
+            document.getElementById('gender-notif').style.display = "inline";
+            dayInput.style.borderColor = "#ced4da"; 
+            monthInput.style.borderColor = "#ced4da"; 
+            yearInput.style.borderColor = "#ced4da"; 
+
+            document.getElementById('man').style.display = "none";
+            document.getElementById('girl').style.display = "none";
+            return;
+        }else{
+            allFilled(day, month, year, gender);
+        }
+    }
+    
     
 }
 //This function calculates the day of the week.
